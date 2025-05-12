@@ -10,33 +10,33 @@
   <div class="header">
     <span class="header-logo">🏋️‍♂️</span>
     MY WORKOUT
-  </div>  
+  </div>
   <div class="container">
     <!-- Tela de seleção de treinos -->
     <div id="mainScreen">
       <div class="treino-cards">
-        <button class="treino-card" data-treino="A" onclick="loadWorkout('A')">
+        <button class="treino-card" data-treino="A" onclick="MyWorkoutApp.loadWorkout('A')">
           <span class="treino-icon">💪</span>
           <div class="treino-info">
             <div class="treino-title">TREINO A</div>
             <div class="treino-desc">Peito / Tríceps + Abdômen</div>
           </div>
         </button>
-        <button class="treino-card" data-treino="B" onclick="loadWorkout('B')">
+        <button class="treino-card" data-treino="B" onclick="MyWorkoutApp.loadWorkout('B')">
           <span class="treino-icon">🏋️‍♂️</span>
           <div class="treino-info">
             <div class="treino-title">TREINO B</div>
             <div class="treino-desc">Costas / Bíceps</div>
           </div>
         </button>
-        <button class="treino-card" data-treino="C" onclick="loadWorkout('C')">
+        <button class="treino-card" data-treino="C" onclick="MyWorkoutApp.loadWorkout('C')">
           <span class="treino-icon">🦵</span>
           <div class="treino-info">
             <div class="treino-title">TREINO C</div>
             <div class="treino-desc">Pernas</div>
           </div>
         </button>
-        <button class="treino-card" data-treino="D" onclick="loadWorkout('D')">
+        <button class="treino-card" data-treino="D" onclick="MyWorkoutApp.loadWorkout('D')">
           <span class="treino-icon">🏃‍♂️</span>
           <div class="treino-info">
             <div class="treino-title">TREINO D</div>
@@ -44,26 +44,25 @@
           </div>
         </button>
       </div>
-      <button class="btn-history" onclick="showHistoryScreen()">📅 HISTÓRICO</button>
+      <button class="btn-history" onclick="MyWorkoutApp.showHistoryScreen()">📅 HISTÓRICO</button>
     </div>
     <!-- Tela de detalhes do treino -->
     <div id="workoutScreen" style="display:none;">
-      <div id="workoutNav"></div>
       <div id="workoutHeader"></div>
       <div id="workoutContent"></div>
       <div class="timer-container">
         <div id="timer">00:00:00</div>
         <div class="timer-btn-row">
-          <button class="timer-btn" onclick="startTimer()">INICIAR</button>
-          <button class="timer-btn" onclick="pauseTimer()">PAUSAR</button>
-          <button class="timer-btn" onclick="resetTimer()">ZERAR</button>
+          <button class="timer-btn" onclick="MyWorkoutApp.startTimer()">INICIAR</button>
+          <button class="timer-btn" onclick="MyWorkoutApp.pauseTimer()">PAUSAR</button>
+          <button class="timer-btn" onclick="MyWorkoutApp.resetTimer()">ZERAR</button>
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-ghost" onclick="showMainScreen()">← Voltar</button>
-        <button class="btn-primary" onclick="saveProgress()">💾 Salvar</button>
-        <button class="btn-ghost" onclick="clearProgress()">🧹 Limpar</button>
-      </div>      
+        <button class="btn-ghost" onclick="MyWorkoutApp.handleExitWorkout()">← Voltar</button>
+        <button class="btn-primary" onclick="MyWorkoutApp.saveProgress()">💾 Salvar</button>
+        <button class="btn-ghost" onclick="MyWorkoutApp.clearProgress()">🧹 Limpar</button>
+      </div>
     </div>
     <!-- Tela de histórico -->
     <div id="historyScreen" style="display:none;">
@@ -72,7 +71,7 @@
         <div class="history-list" id="historyList"></div>
       </div>
       <div class="btn-row-history">
-        <button class="btn-ghost" onclick="showMainScreen()">← VOLTAR</button>
+        <button class="btn-ghost" onclick="MyWorkoutApp.showMainScreen()">← VOLTAR</button>
       </div>
     </div>
     <!-- Toasts -->

@@ -1,8 +1,8 @@
-:root {
-    --primary-color: #FFD700;
+  :root {
+    --primary-color: #FFD600;
     --secondary-color: #222;
     --background-color: #fff;
-    --button-color: #FFD700;
+    --button-color: #FFD600;
     --button-text: #222;
     --card-bg: #FFF5E1;
     --history-bg: #FFE4B5;
@@ -27,7 +27,6 @@
     gap: 12px;
     background: var(--secondary-color);
     color: var(--primary-color);
-    letter-spacing: 2px;
     font-size: 1.5em;
     font-weight: bold;
     padding: 24px 0 20px 0;
@@ -360,7 +359,7 @@
   }
   .workout-header-nav-btn {
     background: #fff;
-    color: #FFD700;
+    color: #FFD600;
     border: none;
     border-radius: 50%;
     width: 38px;
