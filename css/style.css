@@ -319,4 +319,27 @@
     #timer { font-size: 2em; }
     .timer-btn-row { flex-direction: column; gap: 10px; }
   }
+  .toast {
+    visibility: hidden;
+    min-width: 220px;
+    background-color: #FFD700;
+    color: #222;
+    text-align: center;
+    border-radius: 12px;
+    padding: 16px 24px;
+    position: fixed;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    z-index: 9999;
+    font-size: 1.08em;
+    font-weight: bold;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .toast.show {
+    visibility: visible;
+    opacity: 1;
+  }
   

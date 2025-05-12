@@ -176,8 +176,8 @@ const workouts = {
       workout: workouts[currentWorkout].name
     });
     localStorage.setItem('workoutHistory', JSON.stringify(history.slice(0, 7)));
-    alert('Progresso salvo com sucesso!');
-  }
+    showToast('Progresso salvo com sucesso!');
+  }  
   function showMainScreen() {
     document.getElementById('mainScreen').style.display = 'block';
     document.getElementById('workoutScreen').style.display = 'none';
@@ -190,4 +190,13 @@ const workouts = {
     document.getElementById('historyScreen').style.display = 'block';
     renderHistory();
   }
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = "toast show";
+    setTimeout(() => {
+      toast.className = "toast";
+    }, 2000);
+  }
+  
   
