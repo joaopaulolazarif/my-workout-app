@@ -62,18 +62,14 @@ function renderWorkout() {
   const prevTreino = treinoOrder[(currentIdx - 1 + treinoOrder.length) % treinoOrder.length];
   const nextTreino = treinoOrder[(currentIdx + 1) % treinoOrder.length];
 
-  document.getElementById('workoutNav').innerHTML = `
-    <div class="workout-nav">
-      <button class="workout-nav-btn" onclick="handleChangeTreino('${prevTreino}')" title="Treino anterior">←</button>
-      <div class="workout-nav-label">${getTreinoLabel(currentWorkout)}</div>
-      <button class="workout-nav-btn" onclick="handleChangeTreino('${nextTreino}')" title="Próximo treino">→</button>
-    </div>
-  `;
-
   // Destaque do treino selecionado no topo
   document.getElementById('workoutHeader').innerHTML = `
     <div class="workout-header-card">
-      <div class="workout-header-title">${getTreinoLabel(currentWorkout)}</div>
+      <div class="workout-header-nav-row">
+        <button class="workout-header-nav-btn" onclick="handleChangeTreino('${prevTreino}')" title="Treino anterior">←</button>
+        <span class="workout-header-title">${getTreinoLabel(currentWorkout)}</span>
+        <button class="workout-header-nav-btn" onclick="handleChangeTreino('${nextTreino}')" title="Próximo treino">→</button>
+      </div>
       <div class="workout-header-desc">${workout.name}</div>
     </div>
   `;
