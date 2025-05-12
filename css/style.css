@@ -372,5 +372,41 @@
     font-weight: 500;
     letter-spacing: 0.5px;
   }
+  .workout-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 8px;
+  }
+  .workout-nav-btn {
+    background: #FFD700;
+    color: #222;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5em;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: background 0.13s, transform 0.13s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .workout-nav-btn:active {
+    background: #ffe066;
+    transform: scale(0.96);
+  }
+  .workout-nav-label {
+    flex: 1;
+    text-align: center;
+    font-size: 1.12em;
+    font-weight: bold;
+    color: #222;
+    letter-spacing: 1px;
+  }
+  
   
   

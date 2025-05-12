@@ -55,6 +55,19 @@ const workouts = {
   function renderWorkout() {
     const workout = workouts[currentWorkout];
   
+    // Navegação entre treinos
+    const currentIdx = treinoOrder.indexOf(currentWorkout);
+    const prevTreino = treinoOrder[(currentIdx - 1 + treinoOrder.length) % treinoOrder.length];
+    const nextTreino = treinoOrder[(currentIdx + 1) % treinoOrder.length];
+  
+    document.getElementById('workoutNav').innerHTML = `
+      <div class="workout-nav">
+        <button class="workout-nav-btn" onclick="loadWorkout('${prevTreino}')" title="Treino anterior">←</button>
+        <div class="workout-nav-label">${getTreinoLabel(currentWorkout)}</div>
+        <button class="workout-nav-btn" onclick="loadWorkout('${nextTreino}')" title="Próximo treino">→</button>
+      </div>
+    `;
+  
     // Destaque do treino selecionado no topo
     document.getElementById('workoutHeader').innerHTML = `
       <div class="workout-header-card">
@@ -218,5 +231,7 @@ const workouts = {
       toast.className = "toast";
     }, 2000);
   }
+  const treinoOrder = ['A', 'B', 'C', 'D'];
+
   
   
