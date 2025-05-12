@@ -14,11 +14,13 @@
       --card-bg: #FFF5E1;
       --history-bg: #FFE4B5;
     }
+    * { box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: var(--background-color);
+      color: var(--secondary-color);
     }
     .container {
       max-width: 480px;
@@ -40,20 +42,20 @@
     .treino-cards {
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 28px;
       margin: 40px 0 0 0;
     }
     .treino-card {
-      border-radius: 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
-      padding: 28px 22px;
+      border-radius: 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      padding: 32px 22px;
       display: flex;
       align-items: center;
       cursor: pointer;
       transition: transform 0.13s, box-shadow 0.13s;
       border: none;
       outline: none;
-      font-size: 1.15em;
+      font-size: 1.18em;
       font-weight: 600;
       letter-spacing: 1px;
       color: var(--secondary-color);
@@ -63,13 +65,13 @@
     }
     .treino-card:hover, .treino-card:active {
       transform: scale(0.98);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.13);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
       filter: brightness(1.03);
     }
     .treino-icon {
-      font-size: 2.1em;
+      font-size: 2.4em;
       margin-right: 22px;
-      width: 48px;
+      width: 54px;
       text-align: center;
       opacity: 0.93;
     }
@@ -77,110 +79,165 @@
       flex: 1;
     }
     .treino-title {
-      font-size: 1.18em;
+      font-size: 1.23em;
       font-weight: bold;
       margin-bottom: 4px;
       color: var(--secondary-color);
     }
     .treino-desc {
-      font-size: 0.98em;
+      font-size: 1.04em;
       color: #444;
       opacity: 0.85;
       font-weight: 400;
     }
+    .btn-history {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+      border: none;
+      border-radius: 22px;
+      font-size: 1.13em;
+      font-weight: bold;
+      padding: 24px 0;
+      width: 100%;
+      margin: 36px 0 0 0;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+      cursor: pointer;
+      transition: filter 0.13s, box-shadow 0.13s;
+    }
+    .btn-history:active {
+      filter: brightness(0.96);
+    }
+    /* Exercícios */
     .exercise-card {
       background: var(--card-bg);
-      border-radius: 12px;
-      padding: 15px;
-      margin: 15px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      border-radius: 20px;
+      padding: 24px 18px;
+      margin: 24px 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: box-shadow 0.12s;
+    }
+    .exercise-card:hover {
+      box-shadow: 0 6px 24px rgba(34,34,34,0.12);
     }
     .exercise-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 13px;
     }
     .exercise-title {
-      font-size: 1.2em;
+      font-size: 1.16em;
       font-weight: 600;
       color: var(--secondary-color);
+      letter-spacing: 0.5px;
     }
     .exercise-controls {
       display: flex;
-      gap: 15px;
+      gap: 18px;
       align-items: center;
+      flex-wrap: wrap;
     }
     .control-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      margin-bottom: 3px;
     }
     .control-btn {
-      width: 35px;
-      height: 35px;
-      border-radius: 8px;
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
       border: none;
       background: var(--button-color);
       color: var(--button-text);
-      font-size: 1.2em;
+      font-size: 1.3em;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.15s;
+      margin: 0 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: background 0.15s, transform 0.12s;
     }
-    .control-btn:hover, .control-btn:active {
+    .control-btn:active {
       background: #ffe066;
+      transform: scale(0.96);
     }
     .control-value {
-      min-width: 40px;
+      min-width: 44px;
       text-align: center;
       font-weight: 500;
       color: var(--secondary-color);
+      font-size: 1.13em;
     }
+    input[type="checkbox"] {
+      accent-color: #FFD700;
+      width: 26px;
+      height: 26px;
+      cursor: pointer;
+    }
+    /* Timer */
     .timer-container {
-      text-align: center;
-      margin: 30px 0;
+      margin: 38px 0 28px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     #timer {
-      font-size: 2.5em;
+      font-size: 2.6em;
       font-weight: bold;
       color: var(--primary-color);
-      margin: 20px 0;
+      margin-bottom: 18px;
       letter-spacing: 2px;
       text-shadow: 1px 1px 0 #fffbe0;
+      text-align: center;
+      width: 100%;
+    }
+    .timer-btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      flex-wrap: wrap;
     }
     .timer-btn {
-      padding: 12px 25px;
-      margin: 0 5px;
-      border-radius: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
       border: none;
       background: var(--button-color);
       color: var(--button-text);
       font-weight: bold;
       cursor: pointer;
+      font-size: 1.13em;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
       transition: background 0.15s;
+      min-width: 90px;
     }
     .timer-btn:hover, .timer-btn:active {
       background: #ffe066;
     }
+    /* Botões de ação */
     .btn-row {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin-top: 20px;
+      gap: 18px;
+      margin-top: 22px;
     }
     .btn-row .btn-ghost, .btn-row .btn-primary {
       flex: 1 1 0;
-      min-width: 140px;
-      max-width: 200px;
-      padding: 18px 0;
-      font-size: 1em;
+      min-width: 44vw;
+      max-width: 240px;
+      padding: 20px 0;
+      font-size: 1.1em;
       font-weight: bold;
-      border-radius: 18px;
+      border-radius: 22px;
       border: none;
       letter-spacing: 1px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.09);
-      transition: filter 0.13s, box-shadow 0.13s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      transition: filter 0.13s, box-shadow 0.13s, background 0.13s;
       margin: 0;
     }
     .btn-row .btn-ghost {
@@ -197,35 +254,17 @@
     .btn-row .btn-primary:active {
       filter: brightness(0.97);
     }
-    .btn-history {
-      background: var(--secondary-color);
-      color: var(--primary-color);
-      border: none;
-      border-radius: 18px;
-      font-size: 1.1em;
-      font-weight: bold;
-      padding: 22px 0;
-      width: 100%;
-      margin: 28px 0 0 0;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.09);
-      cursor: pointer;
-      transition: filter 0.13s, box-shadow 0.13s;
-    }
-    .btn-history:active {
-      filter: brightness(0.96);
-    }
     #historyScreen { display: none; }
     .history-panel {
       background: var(--history-bg);
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 30px;
+      border-radius: 16px;
+      padding: 28px 18px 16px 18px;
+      margin-top: 38px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     }
     .history-title {
       color: var(--secondary-color);
-      margin-bottom: 15px;
+      margin-bottom: 18px;
       text-align: center;
       letter-spacing: 1px;
       font-size: 1.15em;
@@ -236,9 +275,9 @@
       overflow-y: auto;
     }
     .history-item {
-      padding: 10px 0;
+      padding: 13px 0;
       border-bottom: 1px solid #FFD700;
-      font-size: 0.98em;
+      font-size: 1.04em;
       color: #333;
       display: flex;
       align-items: center;
@@ -276,18 +315,16 @@
     .btn-row-history .btn-ghost:active {
       filter: brightness(0.96);
     }
-    input[type="checkbox"] {
-      accent-color: #FFD700;
-      width: 22px;
-      height: 22px;
-      cursor: pointer;
-    }
     @media (max-width: 600px) {
-      .container { padding: 8px; }
-      .treino-card { font-size: 1em; padding: 20px 10px; }
-      .treino-icon { font-size: 2em; margin-right: 10px; width: 32px; }
-      .btn-row .btn-ghost, .btn-row .btn-primary { min-width: 110px; font-size: 0.98em; }
+      .container { padding: 6px; }
+      .treino-card { font-size: 1em; padding: 18px 8px; }
+      .treino-icon { font-size: 1.6em; margin-right: 10px; width: 32px; }
+      .exercise-card { padding: 14px 8px; }
+      .control-btn { width: 38px; height: 38px; font-size: 1.1em; }
+      .btn-row .btn-ghost, .btn-row .btn-primary { min-width: 46vw; font-size: 1em; padding: 14px 0; }
       .btn-row-history .btn-ghost { min-width: 110px; font-size: 0.98em; }
+      #timer { font-size: 2em; }
+      .timer-btn-row { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -335,9 +372,11 @@
       <div id="workoutContent"></div>
       <div class="timer-container">
         <div id="timer">00:00:00</div>
-        <button class="timer-btn" onclick="startTimer()">INICIAR</button>
-        <button class="timer-btn" onclick="pauseTimer()">PAUSAR</button>
-        <button class="timer-btn" onclick="resetTimer()">ZERAR</button>
+        <div class="timer-btn-row">
+          <button class="timer-btn" onclick="startTimer()">INICIAR</button>
+          <button class="timer-btn" onclick="pauseTimer()">PAUSAR</button>
+          <button class="timer-btn" onclick="resetTimer()">ZERAR</button>
+        </div>
       </div>
       <div class="btn-row">
         <button class="btn-ghost" onclick="showMainScreen()">← VOLTAR</button>
