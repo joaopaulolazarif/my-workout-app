@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Workout - Seu Personal Virtual</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="header">
@@ -80,6 +81,12 @@
       <span id="confirm-exit-msg"></span><br>
       <button id="btn-save-exit" class="toast-btn">Salvar e sair</button>
       <button id="btn-exit" class="toast-btn">Sair sem salvar</button>
+    </div>
+    <!-- Chart -->
+    <div id="chartModal" class="chart-modal">
+      <button class="chart-close" onclick="MyWorkoutApp.closeChartModal()">×</button>
+      <h3 id="chartTitle"></h3>
+      <canvas id="exerciseChart"></canvas>
     </div>
     <script src="js/app.js"></script>
 </body>

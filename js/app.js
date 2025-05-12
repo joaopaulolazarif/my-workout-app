@@ -55,7 +55,14 @@ const MyWorkoutApp = (() => {
     return `
       <div class="exercise-card">
         <div class="exercise-header">
-          <div class="exercise-title">${ex.name}</div>
+          <div class="exercise-title">
+            ${ex.name}
+            <button class="btn-chart" onclick="MyWorkoutApp.openChartModal('${ex.name}')" 
+              title="Ver evolução" 
+              aria-label="Ver evolução do exercício ${ex.name}">
+              📈
+            </button>
+          </div>
           <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
             <input type="checkbox" id="done-${index}" onchange="MyWorkoutApp.toggleDone(${index})" aria-label="Marcar exercício ${ex.name} como concluído">
           </label>
@@ -222,14 +229,26 @@ const MyWorkoutApp = (() => {
   }
 
   function saveProgress() {
-    const history = loadFromStorage('workoutHistory', []);
+    const history = JSON.parse(localStorage.getItem('workoutHistory')) || [];
     const workout = workouts[currentWorkout];
+    const progress = MyWorkoutApp.getCurrentProgress();
+  
+    // Salvar dados detalhados de cada exercício
+    const exercisesData = workout.exercises.map((ex, i) => ({
+      name: ex.name,
+      sets: progress[i].sets,
+      reps: progress[i].reps,
+      weight: progress[i].weight
+    }));
+  
     history.unshift({
       date: new Date().getTime(),
       ficha: getTreinoLabel(currentWorkout),
-      workout: workout.name
+      workout: workout.name,
+      exercisesData
     });
-    saveToStorage('workoutHistory', history.slice(0, 7));
+    
+    localStorage.setItem('workoutHistory', JSON.stringify(history.slice(0, 7)));
     showToast('Progresso salvo com sucesso!');
     lastSavedProgress = MyWorkoutApp.getCurrentProgress();
     MyWorkoutApp.focusFirstExercise();
@@ -324,6 +343,58 @@ const MyWorkoutApp = (() => {
     if (first) first.focus();
   }
 
+  // Busca histórico do exercício
+  function getExerciseHistory(exerciseName) {
+    console.log(localStorage.getItem('workoutHistory'))
+    const history = JSON.parse(localStorage.getItem('workoutHistory')) || [];
+    return history
+      .map(entry => {
+        const ex = entry.exercisesData.find(e => e.name === exerciseName);
+        return ex ? { 
+          date: new Date(entry.date).toLocaleDateString(), 
+          weight: ex.weight,
+          reps: ex.reps 
+        } : null;
+      })
+      .filter(Boolean);
+  }
+
+  // Controla o modal
+  function openChartModal(exerciseName) {
+    document.getElementById('chartTitle').textContent = `Evolução: ${exerciseName}`;
+    document.getElementById('chartModal').style.display = 'block';
+    renderExerciseChart(exerciseName);
+  }
+
+  function closeChartModal() {
+    document.getElementById('chartModal').style.display = 'none';
+  }
+
+  // Renderiza gráfico com Chart.js (adicione o script Chart.js no HTML)
+  function renderExerciseChart(exerciseName) {
+    const data = getExerciseHistory(exerciseName);
+    const ctx = document.getElementById('exerciseChart').getContext('2d');
+    
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.map(d => d.date),
+        datasets: [{
+          label: 'Carga (kg)',
+          data: data.map(d => d.weight),
+          borderColor: '#FFD700',
+          tension: 0.1
+        }, {
+          label: 'Repetições',
+          data: data.map(d => d.reps),
+          borderColor: '#222',
+          tension: 0.1
+        }]
+      }
+    });
+  }
+
+
   // Expor funções necessárias globalmente para HTML
   return {
     loadWorkout, showMainScreen, showHistoryScreen,
@@ -331,6 +402,6 @@ const MyWorkoutApp = (() => {
     saveProgress, clearProgress, startTimer, pauseTimer, resetTimer,
     handleExitWorkout, handleChangeTreino,
     getCurrentProgress, saveExerciseProgress, loadExerciseProgress,
-    focusFirstExercise
+    focusFirstExercise, closeChartModal, openChartModal, loadTimer, saveTimer
   };
 })();
