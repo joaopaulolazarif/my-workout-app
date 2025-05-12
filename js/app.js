@@ -232,6 +232,16 @@ const workouts = {
     }, 2000);
   }
   const treinoOrder = ['A', 'B', 'C', 'D'];
-
+  function clearProgress() {
+    if (!currentWorkout) return;
+    // Remove progresso do treino atual do localStorage
+    localStorage.removeItem(`progress_${currentWorkout}`);
+    // Zera o timer salvo
+    localStorage.removeItem('timerSeconds');
+    // Atualiza a tela para refletir o progresso limpo
+    renderWorkout();
+    resetTimer();
+    showToast('Progresso limpo com sucesso!');
+  }
   
   

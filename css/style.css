@@ -216,14 +216,16 @@
   .btn-row {
     display: flex;
     justify-content: center;
-    gap: 18px;
+    align-items: stretch;
+    gap: 16px; /* Isso garante espaço entre os botões */
     margin-top: 22px;
   }
+  
   .btn-row .btn-ghost, .btn-row .btn-primary {
     flex: 1 1 0;
-    min-width: 44vw;
+    min-width: 0;
     max-width: 240px;
-    padding: 20px 0;
+    padding: 20px 10px; /* padding horizontal maior */
     font-size: 1.1em;
     font-weight: bold;
     border-radius: 22px;
@@ -232,17 +234,21 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     transition: filter 0.13s, box-shadow 0.13s, background 0.13s;
     margin: 0;
+    text-align: center;
+    white-space: normal; /* Permite quebra de linha */
+    word-break: break-word; /* Garante quebra em textos grandes */
   }
+  
   .btn-row .btn-ghost {
     background: #eee;
     color: #444;
   }
-  .btn-row .btn-ghost:active {
-    filter: brightness(0.96);
-  }
   .btn-row .btn-primary {
     background: var(--button-color);
     color: var(--button-text);
+  }
+  .btn-row .btn-ghost:active {
+    filter: brightness(0.96);
   }
   .btn-row .btn-primary:active {
     filter: brightness(0.97);
