@@ -54,7 +54,16 @@ const workouts = {
   
   function renderWorkout() {
     const workout = workouts[currentWorkout];
-    let html = `<h2 style="text-align:center; color: var(--secondary-color); margin-bottom: 12px;">${workout.name}</h2>`;
+  
+    // Destaque do treino selecionado no topo
+    document.getElementById('workoutHeader').innerHTML = `
+      <div class="workout-header-card">
+        <div class="workout-header-title">${getTreinoLabel(currentWorkout)}</div>
+        <div class="workout-header-desc">${workout.name}</div>
+      </div>
+    `;
+  
+    let html = "";
     workout.exercises.forEach((ex, index) => {
       html += `
         <div class="exercise-card">
@@ -84,6 +93,17 @@ const workouts = {
     });
     document.getElementById('workoutContent').innerHTML = html;
     loadExerciseProgress();
+  }
+  
+  // Função auxiliar para mostrar "TREINO A", "TREINO B", etc.
+  function getTreinoLabel(letter) {
+    switch (letter) {
+      case 'A': return 'TREINO A';
+      case 'B': return 'TREINO B';
+      case 'C': return 'TREINO C';
+      case 'D': return 'TREINO D';
+      default: return '';
+    }
   }
   
   function adjustValue(index, type, delta) {
