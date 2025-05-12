@@ -8,8 +8,9 @@
 </head>
 <body>
   <div class="header">
+    <span class="header-logo">🏋️‍♂️</span>
     MY WORKOUT
-  </div>
+  </div>  
   <div class="container">
     <!-- Tela de seleção de treinos -->
     <div id="mainScreen">
@@ -59,10 +60,10 @@
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-ghost" onclick="handleExitWorkout()">← VOLTAR</button>
-        <button class="btn-primary" onclick="saveProgress()">SALVAR TREINO</button>
-        <button class="btn-ghost" onclick="clearProgress()">LIMPAR PROGRESSO</button>
-      </div>
+        <button class="btn-ghost" onclick="showMainScreen()">← Voltar</button>
+        <button class="btn-primary" onclick="saveProgress()">💾 Salvar</button>
+        <button class="btn-ghost" onclick="clearProgress()">🧹 Limpar</button>
+      </div>      
     </div>
     <!-- Tela de histórico -->
     <div id="historyScreen" style="display:none;">

@@ -21,16 +21,23 @@
     padding: 20px;
   }
   .header {
-    text-align: center;
-    padding: 24px 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     background: var(--secondary-color);
     color: var(--primary-color);
     letter-spacing: 2px;
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
+    padding: 24px 0 20px 0;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
     box-shadow: 0 4px 16px rgba(34,34,34,0.07);
+  }
+  .header-logo {
+    font-size: 1.8em;
+    user-select: none;
   }
   .treino-cards {
     display: flex;
@@ -225,7 +232,7 @@
     flex: 1 1 0;
     min-width: 0;
     max-width: 240px;
-    padding: 20px 10px; /* padding horizontal maior */
+    padding: 12px 10px; /* padding horizontal reduzido para evitar quebra */
     font-size: 1.1em;
     font-weight: bold;
     border-radius: 22px;
@@ -235,8 +242,11 @@
     transition: filter 0.13s, box-shadow 0.13s, background 0.13s;
     margin: 0;
     text-align: center;
-    white-space: normal; /* Permite quebra de linha */
-    word-break: break-word; /* Garante quebra em textos grandes */
+    white-space: nowrap; /* evita quebra de linha */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; /* espaço entre ícone e texto */
   }
   
   .btn-row .btn-ghost {

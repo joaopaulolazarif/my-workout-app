@@ -211,19 +211,41 @@ function renderHistory() {
   }
   historyList.innerHTML = history
     .slice(0, 7)
-    .map(entry => `<div class="history-item"><span class="history-date">${new Date(entry.date).toLocaleDateString()}</span><span class="history-workout">${entry.workout}</span></div>`)
+    .map(entry => {
+      const exs = entry.doneExercises && entry.doneExercises.length
+        ? entry.doneExercises.join(', ')
+        : 'Nenhum exercício concluído';
+      return `
+        <div class="history-item">
+          <span class="history-date">${new Date(entry.date).toLocaleDateString()}</span>
+          <span class="history-workout">
+            <strong>${entry.workout}</strong><br>
+            <span style="color:#444; font-size:0.97em;">✔️ ${exs}</span>
+          </span>
+        </div>
+      `;
+    })
     .join('');
 }
+
 function saveProgress() {
   const history = JSON.parse(localStorage.getItem('workoutHistory')) || [];
+  const workout = workouts[currentWorkout];
+  const progress = getCurrentProgress();
+  const doneExercises = workout.exercises
+    .map((ex, i) => progress[i].done ? ex.name : null)
+    .filter(Boolean);
+
   history.unshift({
     date: new Date().getTime(),
-    workout: workouts[currentWorkout].name
+    workout: workout.name,
+    doneExercises
   });
   localStorage.setItem('workoutHistory', JSON.stringify(history.slice(0, 7)));
   showToast('Progresso salvo com sucesso!');
   lastSavedProgress = getCurrentProgress();
 }
+
 function clearProgress() {
   if (!currentWorkout) return;
   localStorage.removeItem(`progress_${currentWorkout}`);
