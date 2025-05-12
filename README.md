@@ -12,7 +12,7 @@ Um app simples e interativo para organizar e acompanhar seus treinos de academia
 ## Como usar
 
 1. Baixe ou clone este repositório.
-2. Abra o arquivo `treino_interativo.html` no seu navegador.
+2. Abra o arquivo `index.html` no seu navegador.
 3. Para usar no celular, envie o arquivo para seu aparelho e abra no navegador (Chrome, Safari, etc).
 4. Você pode adicionar o app à tela inicial do celular para acesso rápido.
 
