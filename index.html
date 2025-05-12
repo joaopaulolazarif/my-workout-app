@@ -59,10 +59,10 @@
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-ghost" onclick="showMainScreen()">← VOLTAR</button>
+        <button class="btn-ghost" onclick="handleExitWorkout()">← VOLTAR</button>
         <button class="btn-primary" onclick="saveProgress()">SALVAR TREINO</button>
         <button class="btn-ghost" onclick="clearProgress()">LIMPAR PROGRESSO</button>
-      </div>      
+      </div>
     </div>
     <!-- Tela de histórico -->
     <div id="historyScreen" style="display:none;">
@@ -74,8 +74,13 @@
         <button class="btn-ghost" onclick="showMainScreen()">← VOLTAR</button>
       </div>
     </div>
-  </div>
-  <div id="toast" class="toast"></div>
-  <script src="js/app.js"></script>
+    <!-- Toasts -->
+    <div id="toast" class="toast"></div>
+    <div id="confirm-exit-toast" class="toast" style="padding: 18px 16px;">
+      <span id="confirm-exit-msg"></span><br>
+      <button id="btn-save-exit" class="toast-btn">Salvar e sair</button>
+      <button id="btn-exit" class="toast-btn">Sair sem salvar</button>
+    </div>
+    <script src="js/app.js"></script>
 </body>
 </html>
